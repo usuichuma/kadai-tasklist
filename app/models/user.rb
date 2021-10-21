@@ -7,5 +7,4 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
                     
   has_many :tasks #追加
-  has_many :microposts
 end
