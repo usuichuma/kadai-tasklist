@@ -1,11 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  def index
-  end
 
-  def show
-  end
-  
   def new
     @user = User.new
   end
@@ -20,25 +14,23 @@ class UsersController < ApplicationController
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
     end
+    
   end
-  
-  def edit
+
+  def show
+    @user = User.find_by(id: params[:id])
   end
-  
-  def update
+
+  def index
+    @user = User.find_by(id: params[:id])
   end
-  
-  def destroy
-  end
-  
+
+  #Strong Parameter 
+
   private
-  
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
-  
-  def set_user
-    @user = User.find_by(id: params[:id])
-  end
+
 end
