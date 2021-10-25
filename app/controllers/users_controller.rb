@@ -9,20 +9,12 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = 'ユーザを登録しました。'
-      redirect_to @user
+      redirect_to login_url
     else
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
     end
     
-  end
-
-  def show
-    @user = User.find_by(id: params[:id])
-  end
-
-  def index
-    @user = User.find_by(id: params[:id])
   end
 
   #Strong Parameter 
